@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Games{% endblock %}</h1>
+  {% if g.user %}
+    <a class="action" href="#">New</a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+<p><strong>Mine Asteroids</strong>&nbsp;&nbsp;&nbsp;<strong>Rocks Mined</strong></p>
+    <p><input id="mine" type="button" style="width:100px" value="Mine Rock" />&nbsp;&nbsp; <input id="creds" size="34" type="text" value="0" /></p>
+    <p><strong>Hire</strong></p>
+    <p><input id="crew1amount" size="2" type="text" value="0" />&nbsp;<input id="crew1" type="button" style="width:110px" />&nbsp;&nbsp;Hired Mining Crews&nbsp <span id="creditPerSecond"></span></p>
+<script type="text/javascript" charset="utf-8">
+    var gen1amount = 0, gen1price = 15, gen1baseprice = 15, rocks = 0, cps = 0;
+    var start = Date.now(), oldcredit=0
+
+    mine.onclick = function() {rocks = rocks + 1};
+    crew1.onclick = function() {
+        if (rocks >= gen1price) {
+            rocks = rocks - gen1price;
+            gen1amount = gen1amount + 1;
+            gen1price = gen1baseprice * (Math.pow(1.15, gen1amount));
+            };
+        };
+
+    function update(){
+        rocks = rocks + (gen1amount/62.5);
+    };
+    function draw(){
+        creditPerSecond.innerText = gen1amount.toFixed(0)+ "/s";
+        creds.value = rocks.toFixed(0);
+        crew1.value = gen1price.toFixed(0);
+        crew1amount.value = gen1amount.toFixed(0);
+    };
+    var mainloop = function() {update(), draw()};
+    setInterval(mainloop, 16);
+</script>
+{% endblock %}
