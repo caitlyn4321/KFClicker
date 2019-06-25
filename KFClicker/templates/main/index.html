@@ -10,27 +10,66 @@
 {% endblock %}
 
 {% block content %}
-    <div><strong>Mine Asteroids</strong><br />
-    <input id="mineRock" type="button" style="width:100px" value="Mine Rock" />&nbsp;&nbsp; <input id="rocksMined" size="34" type="text" value="0" /> rocks<br />
-    <input id="mineGas" type="button" style="width:100px" value="Mine Gas" />&nbsp;&nbsp; <input id="gasMined" size="34" type="text" value="0" /> L</div>
+    <div class="row">
+        <div class="col"><strong>Mine Asteroids</strong>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <input id="mineRock" type="button" value="Mine Rock"  class="btn btn-primary"/>
+                </div>
+                <input id="rocksMined"type="text" value="0" />
+                <div class="input-group-append">
+                    <span class="input-group-text">rocks</span>
+                </div>
+            </div><br />
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <input id="mineGas" type="button" value="Mine Gas"  class="btn btn-primary"/>
+                </div>
+                <input id="gasMined" type="text" value="0" />
+                <div class="input-group-append">
+                    <span class="input-group-text">L</span>
+                </div>
+            </div>
+        </div>
+        <div class="col"><strong>Refined Goods</strong>
+            <div class="input-group">
+                <input id="metal" type="text" value="0" />
+                <div class="input-group-append">
+                    <span class="input-group-text">ingots</span>
+                </div>
+            </div>
+            <div class="input-group">
+                <input id="chemicals" type="text" value="0" />
+                <div class="input-group-append">
+                    <span class="input-group-text">Barrels</span>
+                </div>
+            </div>
+        </div>
 
-    <div><strong>Refined Goods</strong><br />
-    <input id="metal" size="34" type="text" value="0" /> ingots<br />
-    <input id="chemicals" size="34" type="text" value="0" /> Barrels</div>
+        <div class="col"><strong>Manufacturing</strong>
+            <div class="input-group">
+                <input id="widgetAmount" type="text" value="0" />
+                <div class="input-group-append">
+                    <span class="input-group-text">widgets</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row align-items-center">
+        <div class="col p-4">
+            <strong>Hire</strong> Amount <select id="multiplier"><option>1</option><option>10</option><option>100</option><option>1000</option><option>10000</option><option>100000</option></select><br />
+            <input id="sstaffAmount" size="2" type="text" value="0" />&nbsp;<input id="sstaffBuy" type="button"  class="btn btn-primary" value="Hire"/> for <input id="sstaffPrice" size="2" type="text" value="0" /> Currently Supports <span id="currSupports"></span><br />
+            <input id="rMinerAmount" size="2" type="text" value="0" />&nbsp;<div class="btn-group"><input id="rMinerBuy" type="button"  class="btn btn-primary" value="Promote"/><input id="rMinerSell" type="button"  class="btn btn-primary" value="Demote"/></div>&nbsp;&nbsp;Hired Rock Mining Crews&nbsp; <span id="rocksPerSecond"></span><br />
+            <input id="gMinerAmount" size="2" type="text" value="0" />&nbsp;<div class="btn-group"><input id="gMinerBuy" type="button"  class="btn btn-primary" value="Promote"/><input id="gMinerSell" type="button"  class="btn btn-primary" value="Demote"/></div>&nbsp;&nbsp;Hired Gas Mining Crews&nbsp; <span id="gasPerSecond"></span><br />
+            <input id="recruitAmount" size="2" type="text" value="0" />&nbsp;<div class="btn-group"><input id="recruitBuy" type="button"  class="btn btn-primary" value="Promote"/><input id="recruitSell" type="button"  class="btn btn-primary" value="Demote"/></div>&nbsp;&nbsp;Staff Recruitment&nbsp; <span id="recruitPerSecond"></span><br />
+            <input id="widgeteerAmount" size="2" type="text" value="0" />&nbsp;<div class="btn-group"><input id="widgeteerBuy" type="button"  class="btn btn-primary" value="Promote"/><input id="widgeteerSell" type="button"  class="btn btn-primary" value="Demote"/></div>&nbsp;&nbsp;Widgeteers Producing&nbsp; <span id="widgetPerSecond"></span>
+        </div>
 
-    <div><strong>Manufacturing</strong><br />
-    <input id="widgetAmount" size="34" type="text" value="0" /> widgets</div>
-
-    <div><strong>Hire</strong> Amount <select id="multiplier"><option>1</option><option>10</option><option>100</option><option>1000</option><option>10000</option><option>100000</option></select><br />
-    <input id="sstaffAmount" size="2" type="text" value="0" />&nbsp;<input id="sstaffBuy" type="button" style="width:110px" value="Hire"/> for <input id="sstaffPrice" size="2" type="text" value="0" /> Currently Supports <span id="currSupports"></span><br />
-    <input id="rMinerAmount" size="2" type="text" value="0" />&nbsp;<input id="rMinerBuy" type="button" style="width:110px" value="Promote"/><input id="rMinerSell" type="button" style="width:110px" value="Demote"/>&nbsp;&nbsp;Hired Rock Mining Crews&nbsp; <span id="rocksPerSecond"></span><br />
-    <input id="gMinerAmount" size="2" type="text" value="0" />&nbsp;<input id="gMinerBuy" type="button" style="width:110px" value="Promote"/><input id="gMinerSell" type="button" style="width:110px" value="Demote"/>&nbsp;&nbsp;Hired Gas Mining Crews&nbsp; <span id="gasPerSecond"></span><br />
-    <input id="recruitAmount" size="2" type="text" value="0" />&nbsp;<input id="recruitBuy" type="button" style="width:110px" value="Promote"/><input id="recruitSell" type="button" style="width:110px" value="Demote"/>&nbsp;&nbsp;Staff Recruitment&nbsp; <span id="recruitPerSecond"></span></div>
-    <input id="widgeteerAmount" size="2" type="text" value="0" />&nbsp;<input id="widgeteerBuy" type="button" style="width:110px" value="Promote"/><input id="widgeteerSell" type="button" style="width:110px" value="Demote"/>&nbsp;&nbsp;Widgets Produced&nbsp; <span id="widgetPerSecond"></span></div>
-
-    <div><strong>Equipment</strong><br />
-    <input id="forgeAmount" size="2" type="text" value="0" />&nbsp;<input id="forgeBuy" type="button" style="width:110px" value="Buy"/> for <input id="forgePrice" size="2" type="text" value="0" /> Forging <span id="metalPerSecond"></span><br />
-    <input id="reactorAmount" size="2" type="text" value="0" />&nbsp;<input id="reactorBuy" type="button" style="width:110px" value="Buy"/> for <input id="reactorPrice" size="2" type="text" value="0" /> Chemical Reacting <span id="chemPerSecond"></span></div>
-
+        <div class="col p-4">
+        <strong>Equipment</strong><br />
+        <input id="forgeAmount" size="2" type="text" value="0" />&nbsp;<input id="forgeBuy" type="button" class="btn btn-primary" value="Buy"/> for <input id="forgePrice" size="2" type="text" value="0" /> Forging <span id="metalPerSecond"></span><br />
+        <input id="reactorAmount" size="2" type="text" value="0" />&nbsp;<input id="reactorBuy" type="button" class="btn btn-primary" value="Buy"/> for <input id="reactorPrice" size="2" type="text" value="0" /> Chemical Reacting <span id="chemPerSecond"></span>
+        </div>
+    </div>
 
 {% endblock %}

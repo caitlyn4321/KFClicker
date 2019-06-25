@@ -190,10 +190,10 @@ function update(){
     saveGame.resources.support.amount = saveGame.resources.support.amount + (saveGame.resources.recruiter.amount/625);
     saveGame.resources.metal.amount = saveGame.resources.metal.amount + (saveGame.resources.forge.amount/62.5);
     saveGame.resources.chemicals.amount = saveGame.resources.chemicals.amount + (saveGame.resources.reactor.amount/62.5);
-    if(saveGame.resources.widgets.amount > 0 && saveGame.resources.metal.amount >= saveGame.resources.widgets.price.metal && saveGame.resources.chemicals.amount >= saveGame.resources.widgets.price.chemicals) {
-        saveGame.resources.widgets.amount = saveGame.resources.widgets.amount + (saveGame.resources.widgets.amount/625);
-        saveGame.resources.metal.amount = saveGame.resources.metal.amount - (saveGame.resources.reactor.price.metal/625);
-        saveGame.resources.chemicals.amount = saveGame.resources.chemicals.amount - (saveGame.resources.reactor.price.chemicals/625);
+    if(saveGame.resources.widgeteer.amount > 0 && saveGame.resources.metal.amount >= saveGame.resources.widgets.price.metal && saveGame.resources.chemicals.amount >= saveGame.resources.widgets.price.chemicals) {
+        saveGame.resources.widgets.amount = saveGame.resources.widgets.amount + (saveGame.resources.widgeteer.amount/625);
+        saveGame.resources.metal.amount = saveGame.resources.metal.amount - (saveGame.resources.widgets.price.metal/625);
+        saveGame.resources.chemicals.amount = saveGame.resources.chemicals.amount - (saveGame.resources.widgets.price.chemicals/625);
     }
     if (saveGame.resources.rock.amount < 0) {saveGame.resources.rock.amount=0}
     if (saveGame.resources.gas.amount < 0) {saveGame.resources.gas.amount=0}
@@ -255,6 +255,16 @@ function draw(){
     } else { reactorBuy.disabled = true;};
 };
 
+function cheatyStart() {
+    saveGame.resources.rock.amount= 1000000;
+    saveGame.resources.gas.amount= 1000000;
+    saveGame.resources.rockMiner.amount= 3000;
+    saveGame.resources.support.amount= 1000;
+    saveGame.resources.gasMiner.amount= 1000;
+    saveGame.resources.metal.amount= 10000;
+    saveGame.resources.chemicals.amount= 10000;
+}
+
 function setupLoop() {
     mineRock.onclick = mineClick;
     mineGas.onclick = gasClick;
@@ -272,5 +282,6 @@ function setupLoop() {
     var mainloop = function() {update(), draw()};
     setInterval(mainloop, 16);
     multiplier.addEventListener("change", function() { multChange();});
+    cheatyStart();
 };
 window.addEventListener("load", function() { setupLoop();});
